@@ -1,0 +1,150 @@
+{% extends 'polls/base.html' %}
+
+{% block styles %}
+
+{{block.super}}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"> 
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+<link href="https://fonts.googleapis.com/css2?family=Tajawal&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"> 
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"> 
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+<link href="https://fonts.googleapis.com/css2?family=Squada+One&display=swap" rel="stylesheet">
+<style>
+    body {
+        
+    }
+    .inpbox {
+        border-style: thick;
+        border-color:rgb(254, 194, 96);
+        border-radius: 10px;
+        width: 30%;
+    }
+
+    label {
+
+    }
+
+    #signinbutton {
+        border-radius: 10px;
+        border-style: solid;
+        font-size: 25px;
+        /* font-family: 'Yanone Kaffeesatz', sans-serif; */
+        /* font-family: 'Nanum Gothic Coding', monospace; */
+        font-family: 'Squada One', cursive;
+        
+    }
+    #logincont {
+        text-align:center;
+        padding-top: 100px;
+    }
+    .gimmespace {
+        margin-bottom: 15px;
+    }
+    .inpboxes {
+       border-radius: 12px;
+       border-color: rgb(254, 194, 96);
+       border-style: solid;
+       border-width: medium;
+    }
+
+    .l1 {
+        /* font-family: 'Yanone Kaffeesatz', sans-serif; */
+        color: rgb(63, 167, 150);
+        font-size: 18px;
+        /* font-family: 'Roboto Mono', monospace; */
+        font-family: 'Tajawal', sans-serif;
+        /* font-family: 'Nanum Gothic Coding', monospace; */
+        
+    }
+    .dec {
+        
+    }
+</style>
+
+{% endblock styles %}
+
+{% comment %}
+{% block content %}
+
+  <div>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div>
+            <div></div>
+            <div>
+            <label class="dec" for="inputEmail">Email</label>
+            <input type="text" name="username" class="form-control inpbox" id="inputEmail" placeholder="Email" required>
+            </div>
+            <div></div>
+        </div>
+        <div>
+            <div></div>
+            <div >
+            <label class="dec" for="inputPassword">Password</label>
+            <input class="inpbox" type="password" name="password" id="inputPassword" placeholder="Password" required>
+            </div>
+            <div></div>
+        </div>
+        <div>
+            <div></div>
+            <div>
+                <div>
+                    <input type="checkbox" id="checkRemember">
+                    <label for="checkRemember">Remember me</label>
+                </div>
+                <div>
+                    <a href="">Forgot Password?</a>
+                </div>
+            </div>
+            <div></div>
+        </div>
+        <div>
+        <div></div>
+        <div>
+            <button style="background-color: rgb(63, 167, 150);" type="submit" class="btn btn-primary">Sign in</button>
+        </div>
+        <div></div>
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}
+
+{% endcomment %}
+
+{% block content %}
+<div id="logincont">
+    <form action="" method="post">
+        {% csrf_token %}
+        <strong>
+            <label class="l1 gimmespace" style="width:100%;" for="inputEmail">EMAIL</label>
+        </strong>
+        <div>
+            <input class="gimmespace inpboxes" aria-rowspan="" type="text" name="username" class="inpbox" id="inputEmail" placeholder="Email" required>
+        </div>
+        <strong>
+            <label class="l1 gimmespace" style="width:100%;" for="inputPassword">PASSWORD</label>
+        </strong>
+        <div>
+            <input class="gimmespace inpboxes" type="password" name="password" id="inputPassword" placeholder="Password" required>
+        </div>
+        <div>
+            <input type="checkbox" id="checkRemember">
+            <em>
+                <label for="checkRemember">Remember me</label>
+            </em>
+            <em>
+                <a href="{% url 'polls:forgot_password' %}" style="text-decoration:none;">Forgot Password?</a>
+            </em>
+            <button id="signinbutton" style="background-color: rgb(63, 167, 150);color: whitesmoke;" type="submit">Sign in</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

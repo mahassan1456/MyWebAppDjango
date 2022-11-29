@@ -1,0 +1,28 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+mysqlclient = "*"
+django-crispy-forms = "*"
+pillow = "*"
+plotly = "*"
+pandas = "*"
+djangorestframework = "*"
+gunicorn = "*"
+celery = "*"
+redis = "*"
+django-celery-beat = "*"
+pyjwt = "*"
+cryptography = "*"
+python-jose = {extras = ["cryptography"], version = "*"}
+passlib = {extras = ["bcrypt"], version = "*"}
+openpyxl = "*"
+xlsxwriter = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.9"

@@ -1,0 +1,26 @@
+{% extends 'polls/base.html' %}
+
+{% block styles %}
+
+{{block.super}}
+<style>
+    input {
+        border-radius: 10px;
+    }
+
+    button {
+        border-radius: 10px;
+    }
+
+</style>
+
+{% endblock styles %}
+{% block content %}
+
+<form method="post" action="" enctype="multipart/form-data"> 
+    {% csrf_token %} 
+    {{ form.as_p }} 
+    <input type="submit" value="Save"> 
+</form> 
+
+{% endblock %}

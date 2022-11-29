@@ -1,0 +1,306 @@
+{% extends 'polls/base.html' %}
+
+{% block styles %}
+{{block.super}}
+
+<style>
+    body {
+
+        color: rgb(42, 9, 68);
+    }
+
+    #between_boxes {
+
+        display: none;
+    }
+
+    #single_date_box {
+
+        display: none;
+    }
+
+    #teamtype {
+
+        display: none;
+        margin-top: 10px;
+    }
+
+    #butt {
+
+        border-radius: 10px;
+        background-color: rgb(63, 167, 150);
+        color: whitesmoke;
+        margin-top: 10px;
+    }
+
+    .allboxes_sing {
+
+        margin-top: 10px;
+    }
+
+    .allboxes_mul {
+
+        margin-top: 10px;
+    }
+
+    #filter {
+
+        margin-top: 10px;
+    }
+
+    #gametype {
+
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    form {
+
+        text-align: center;
+    }
+
+    #date_range_date {
+        
+        border-radius: 10px;
+    }
+
+    #date_range_start {
+
+        border-radius: 10px;
+    }
+
+    #date_range_end {
+
+        border-radius: 10px;
+    }
+
+    #teamtypehome {
+
+        display:none;
+        margin-top: 10px;
+        margin-left: 5px;
+       
+    }
+
+    #teamtypeaway {
+
+        display:none;
+        margin-top: 10px;
+        
+    }
+
+    #at {
+
+        font-size: 25px;
+        display: none;
+    }
+    #home_away_team_name {
+
+        border-radius: 10px;
+    }
+
+    #compare {
+        border-radius: 10px;
+    }
+
+    #team_name_h {
+
+        border-radius: 10px;
+    }
+
+    #team_name_a {
+
+        border-radius: 10px;
+    }
+
+</style>
+
+{% endblock styles %}
+{% block content %}
+
+<script>
+
+    function datebox() {
+
+        var compare = document.getElementById("compare");
+        var multi_box_label = document.getElementById("between_boxes");
+        var single_box_label = document.getElementById("single_date_box");
+
+        if (compare.value == "BETWEEN") {
+            single_box_label.style.display = "none";
+            multi_box_label.style.display = "block";
+
+        } else if (compare.value == "ALL") {
+            single_box_label.style.display = "none";
+            multi_box_label.style.display = "none";
+
+        } else {
+            multi_box_label.style.display = "none";
+            single_box_label.style.display = "block";   
+        }
+    }
+
+    function teamormatchup() {
+        var elem = document.getElementById('home_away_team_name');
+        var teamtypehome = document.getElementById('teamtypehome');
+        var teamtypeaway = document.getElementById('teamtypeaway');
+        var atsign = document.getElementById('at');
+        var label = document.getElementById('result2');
+
+        if (elem.value == "ALL") {
+            teamtypehome.style.display = "none";
+            teamtypeaway.style.display = "none";
+            atsign.style.display = "none";
+
+        } else {
+
+            if (elem.value == "MATCHUP_HOME") {
+                teamtypehome.style.display = "inline";
+                teamtypeaway.style.display = "inline";
+                atsign.style.display = "inline";
+                label.style.display = "none";
+                return;
+
+
+            } else if (elem.value != "ALL") {
+
+                atsign.style.display = "none";
+
+                if (elem.value == 'TEAM_ABBREVIATION_HOME') {
+                    teamtypeaway.style.display = "none";
+                    teamtypehome.style.display = "block";
+                    var finished = "Home";
+
+                } else if (elem.value == 'TEAM_ABBREVIATION_AWAY') {
+                    teamtypeaway.style.display = "block";
+                    teamtypehome.style.display = "none";
+                    label.style.display = "inline";
+                    var finished = "Away";
+                }
+            }
+        }
+    }
+</script>
+
+<p data-b="{{ red }}">T</p>
+{% for message in messages %}
+
+    <p>{{ message }} </p>
+
+{% endfor %}
+
+<!-- FORM FOR FILLING IN QUERY PARAMETERS -->
+<form action="" method="post" id="form1">
+
+    {% csrf_token %}
+
+    <div id="filter">
+        <label for="compare" id="compare_label">Date Filter: </label>
+        <select name="comparing" id="compare" onchange="datebox()">
+            <option value="ALL" onclick="" selected>None</option>
+            <option value=">" onclick="">Greater Than</option>
+            <option value="<">Less Than</option>
+            <option value="=">Equals</option>
+            <option value="BETWEEN">Between</option>
+        </select>
+    </div>
+  
+    <div id="single_date_box">
+        <label class='allboxes_sing' for='date_range_date' id='drange_s'> Date: </label>
+        <input class='allboxes_sing' type='date' min='1947-01-01' max= '2021-05-01' name='only_date' id='date_range_date'>
+    </div>
+
+    <div id="between_boxes">
+        <label class='allboxes_mul' for='date_range_start' id='drange_s'> Start Date: </label>
+        <input class='allboxes_mul' type='date' name='start_date' id='date_range_start' placeholder='YYYY-MM-DD'>
+        <label class='allboxes_mul' for='date_range_end' id='drange_e'> End Date: </label> 
+        <input class='allboxes_mul' type='date' name='end_date' id='date_range_end' placeholder='YYYY-MM-DD'> 
+    </div>
+
+    <div id="gametype">
+        <label for="home_away_team_name">Game(s) Filter: </label>
+        <select onchange='teamormatchup()' name="comparing2" id="home_away_team_name">
+            <option value="ALL" selected>All</option>
+            <option value="TEAM_ABBREVIATION_HOME">Home</option>
+            <option value="TEAM_ABBREVIATION_AWAY">Away</option>
+            <option value="MATCHUP_HOME">Head 2 Head</option>
+        </select>
+    </div>
+
+    <div id="teamtypehome">
+        <label class='lpr' for="team_name_h" id="result1">Team(s): </label>
+        <select onchange='' name="home_team_v" id="team_name_h">
+            <option value=""> -- select an option -- </option>
+            {% for team in teams %}
+            <option value="{{team}}"> {{team}} </option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <span id="at">@</span>
+
+    <div id="teamtypeaway">
+        <label class='lpr' for="team_name_a" id="result2">Team(s): </label>
+        <select onchange='' name="away_team_v" id="team_name_a">
+            <option value=""> -- select an option -- </option>
+            {% for team in teams %}
+            <option value="{{team}}"> {{team}} </option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div>
+        <input id="butt" type="submit" value="Search">
+    </div>
+
+</form>
+{% comment %}
+<script>
+    function Download() {
+        var URL = document.getElementById("button1").getAttribute("data-url");
+        fetch(URL)
+        .then((res) => { 
+            return res.blob(); 
+        }) 
+        .then((data) => {
+            var a = document.createElement("a");
+            a.href = window.URL.createObjectURL(data);
+            a.download = "NBABALL"
+            a.click()
+        })
+    }
+
+</script>
+{% endcomment %}
+
+
+{% endblock %}
+
+
+$(document).ready( function () {
+    setInterval(function() {
+  
+    $.ajax({
+        type:'GET',
+        url: "{% url 'polls:chat_notify' %}",
+        success: function(response) {
+            if (response.notify) {
+                console.log("test2 bitch")
+                $("#chatnotify").html("Chats<i class='fa-solid fa-envelope' id='badge'></i>");
+                console.log("print me");
+            } else {
+                $("#chatnotify").text("Chats");
+            }
+        },
+        error: function(response) {
+            console.log("Error Getting Data");
+        }
+    });
+    }, 2000);
+
+});
+
+function Download() {
+    document.getEl
+    fetch
+}
