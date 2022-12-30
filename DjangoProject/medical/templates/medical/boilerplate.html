@@ -1,0 +1,70 @@
+{% extends 'medical/base1.html' %}
+
+{% load static %}
+
+{% block styles %}
+{{block.super}}
+
+<style>
+
+#messagecont {
+
+    position: relative;
+
+}
+
+.code {
+display: inline-block;
+margin-left: 2px;
+margin-right:40px;
+margin-top: 5px;;
+
+top:60px;
+border-radius: 10px;
+
+}
+
+.success {
+
+
+color: rgb(9, 133, 9);
+}
+
+.warning, .error {
+
+
+color:  rgb(133, 19, 19);
+
+}
+
+#messagecont {
+
+
+
+}
+
+
+</style>
+
+
+
+{% endblock styles %}
+
+
+
+{% block content %}
+
+
+{% if messages %}
+    {% for message in messages %}
+    <div id="messagecont">
+        <span {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{message}}</span>
+    </div>
+    {% endfor %}
+{% endif %}
+
+
+
+
+
+{% endblock %}

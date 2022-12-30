@@ -1,0 +1,28 @@
+
+
+  <div class="outer-container">
+        <p class="form-title">{{header}}</p>
+          
+            <form action="" method="post" novalidate>
+                <div class="flex-container">
+                      {% csrf_token %}
+                      {% for field in form %}
+                      <div class="input-fam">
+                          {% if field.errors %}
+                          {{field.errors}}
+                          {% endif %}
+                          <div class="inner-flex">
+                              <label for="namebox">{{field.label}}</label>
+                              <br>
+                              {{field}}
+                          </div>
+                      </div>
+                    {% endfor %}
+                   </div>
+                <input class="subbutt" type="submit">
+            </form>
+  </div>
+     
+     
+      
+      

@@ -1,0 +1,46 @@
+
+
+    <div class="grid-container">
+
+        <div class="grid-child gccl">
+          &nbsp;
+        </div>
+  
+        <div class="grid-child gccm">
+  
+          <p class="form-title">{{header}}</p>
+              <form action="" method="post" novalidate>
+                  <div class="flex-container">
+                      {% csrf_token %}
+                      {% for field in form %}
+                      {% comment %}
+                      this can also be placed above here outside of the child flex container. it would results in the error
+                      message becoming its own flex child instead of being apart of the input-fam flex group.
+                      {% if field.errors %}
+                      {{field.errors}}
+                      {% endif %}
+                      {% endcomment %}
+                      
+                      <div class="input-fam">
+                          {% if field.errors %}
+                          {{field.errors}}
+                          {% endif %}
+                          <div class="inner-flex">
+                              <label for="namebox">{{field.label}}</label>
+                              {{field}}
+                          </div>
+                      </div>
+                      {% endfor %}
+                  </div>
+                  <input style="width:25%;" class="subbutt" type="submit">
+              </form>
+        </div>
+       
+        
+        <div class="grid-child gccr">
+          &nbsp;
+        </div>
+        
+  
+      </div>
+  

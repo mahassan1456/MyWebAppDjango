@@ -1,0 +1,82 @@
+
+<div id="parent-container">
+    <form action="" method="post" novalidate>
+
+        {% csrf_token %}
+        
+        <div id="header-form-container">
+            <div class="header-form" id="header-form-single">
+
+                    <h1 id="header-form-text">{{header}}</h1>
+                
+            </div>
+        </div>
+
+        <div id="form-body-container" style="position:relative;">
+            
+            <div class="grid_child left">
+                {% for field in form %}
+                <div class="label-elements">{{field.label}}</div>
+                {% if field.errors %}
+                <div>{{field.errors}}</div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            <div class="grid-child right">
+                <div class="format-inputs">
+                    {% for field in form %}
+
+                    <div class="form-body">
+
+                        <div class="form-elements input">{{field}}</div>
+
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        
+        <div id="form-footer-container">
+
+            <div id="form-footer">
+
+                <div id="form-footer-text">
+                    <div class="grid-child bottom" >
+                        <input type="submit" class="form-elements" value="Submit">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </form>
+
+</div>
+
+{% for field in form %}
+{% if field.errors %}
+    <script type="">
+
+    document.addEventListener("DOMContentLoaded", function(){
+
+        var id_element = "input"+"{{forloop.counter}}";
+        var x = document.getElementById(id_element);
+        x.style.marginBottom = '12px';
+        x.style.marginTop = '7px';
+        
+        
+  // Code here waits to run until the DOM is loaded.
+});
+    </script>
+{% endif %}
+{% endfor %}
+
+
+{% comment %}
+var id_element = "#input"+"{{forloop.counter}}";
+var x = document.querySelector(id_element).setAttribute('data-bg', id_element);
+x.style.marginBottom = '20px;'
+var t = document.queryselector('body');
+t.style.backgroundColor = 'green';
+{% endcomment %}

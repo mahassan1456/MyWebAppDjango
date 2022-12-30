@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cabin:ital@1&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital@1&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Hind+Madurai&display=swap" rel="stylesheet">
+    {% block styles %}
+    {% endblock styles %}
+    {% comment %}
+    color #85586F(hex)
+    color #D0B8A8(hex)
+    color #DFD3C3(hex)
+    color #F8EDE3(hex)
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color:#e4f1fe;
+    {% endcomment %}
+    <style>
+
+body {
+padding:0;
+margin:0;
+background: rgb(255,255,255); 
+background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(247,251,255,1) 45%, rgba(228,241,254,1) 83%); 
+}
+
+.parent-flex-container {
+position:fixed;
+background-color:#38598b;
+width:100%;
+margin-bottom: 50px;
+height:50px;
+vertical-align:bottom;
+box-sizing: border-box;
+z-index:100;
+border-bottom:0.5px solid #e4f1fe;
+}
+
+.spacer {
+position:relative;
+width: 100%;
+height:60px;
+}
+
+.flex-nav-child  span {
+color:#e4f1fe;
+margin-top: 20px;
+position:relative;
+font-size:19.5px;
+top:15px;
+font-family: 'Cabin', sans-serif;
+font-family: 'Hind Madurai', sans-serif;
+}
+
+.flex-nav-bar-container {
+position:relative;
+display: flex;
+justify-content:space-between;
+align-items:baseline;
+width:100%;
+height:100%;
+padding-left:12px;
+padding-right:12px
+}
+
+.success {
+color:green
+}
+
+.warning, .error {
+color:rgb(139, 18, 18);
+}
+
+.flex-nav-child span{
+font-family: 'Cabin', sans-serif;
+font-family: 'Hind Madurai', sans-serif;
+font-size: 17px;
+}
+
+.flex-child-nav-left span {
+margin-left:3px;
+margin-right:7px;
+}
+
+.flex-child-nav-right span {
+margin-left:7px;
+margin-right:3px;
+}
+
+.flex-nav-child {
+align-items: baseline;
+}
+
+a {
+text-decoration: none;
+}
+
+a {
+color: #e4f1fe;
+text-decoration: none;
+}
+
+a:hover {
+color:#e4f1fe; 
+text-decoration:none; 
+cursor:pointer;  
+}
+
+.messagecont {
+margin:1vw;
+margin-left: 2vw;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i&display=swap");
+
+.form {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 16px;
+}
+
+.form * {
+  box-sizing: border-box;
+  line-height: 1.5;
+}
+
+.form__title {
+  font-size: 2em;
+  font-weight: 600;
+}
+
+.form__item {
+  display: flex;
+  flex-direction: column;
+}
+
+.form__item > * {
+  align-self: flex-start;
+}
+
+.form__label {
+  font-weight: 600;
+  padding: 10px 0;
+}
+
+.form__input {
+  -webkit-appearance: none;
+
+  width: 100%;
+  max-width: 425px;
+
+  /* Fix for Safari/iOS date fields */
+  min-height: calc(0.9em + (0.8em * 2) + 0.6em);
+
+  padding: 0.8em;
+  font-size: 0.9em;
+  font-family: "Source Sans Pro", sans-serif;
+
+  outline: none;
+  border: 1px solid #dddddd;
+  border-radius: 10px;
+  background: #f9f9f9;
+  transition: background 0.25s, border-color 0.25s, color 0.25s;
+}
+
+.form__input:focus {
+  background: #ffffff;
+}
+
+.form__input::placeholder {
+  color: #bbbbbb;
+}
+
+.form__input--error {
+  color: #d50000;
+  background: #fff8f8;
+  border-color: #d50000;
+}
+
+.form__input--error::placeholder {
+  color: #ffbfbf;
+}
+
+.form__error {
+  padding-top: 10px;
+  color: #d50000;
+  font-size: 0.9em;
+  
+}
+
+/* .form__input--error + .form__error {
+  visibility: visible;
+} */
+
+.form__input--small {
+  max-width: 250px;
+}
+
+textarea.form__input {
+  resize: none;
+  min-height: 200px;
+}
+
+.form__btn {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 600;
+  font-size: 1.1em;
+  padding: 10px 16px;
+  margin: 10px 0;
+
+  color: #ffffff;
+  background: #14b64a;
+  border: 2px solid #0fa942;
+  border-radius: 5px;
+
+  cursor: pointer;
+  outline: none;
+}
+
+.form__btn:active {
+  background: #0fa942;
+}
+
+.form__item {
+
+    position:relative;
+    margin-left:1vw;
+}
+
+input {
+
+    position:relative;
+    width:40%;
+    border-radius: 4px;
+    border:1px solid gray;
+}
+
+form {
+
+    margin-left:1vw;
+}
+
+.container-title {
+
+    margin-left:1vw;
+}
+
+
+body {
+
+    background-color: #14b64a;
+}
+
+textarea {
+
+    width:40%;
+    border-radius: 4px;
+}
+
+    </style>
+
+    <title>MediFill</title>
+</head>
+    <body>
+        <div class="parent-flex-container">
+
+            <div class="flex-nav-bar-container">
+                
+                 <div class="flex-child-nav-left flex-nav-child">
+                    {% if request.user.is_superuser %}
+                    <span> <a href="{% url 'admin:index' %}">Administrative</a> </span>
+                    <span> <a href="{% url 'medical:reviewaccount'  %}">Facilities</a> </span>
+                    <span> <a href="{% url 'medical:dashboard'  %}">Dashboard</a> </span>
+                    <span> <a href="{% url 'medical:products' %}">Products </a> </span>
+                    {% else %}
+                        {% if request.user.is_authenticated %}
+                        <span> <a href="{% url 'medical:dashboard'  %}">Dashboard</a> </span>
+                        <span> <a href="{% url 'medical:reviewaccount'  %}">Facilities</a> </span>
+                        <span> <a href="{% url 'medical:products' %}">Products </a> </span>
+                        <span><a href="{% url 'medical:contactus' %}">Contact Us</a></span>
+                        {% else %}
+                        <span> <a href="{% url 'medical:products' %}">Products </a> </span>
+                        <span><a href="{% url 'medical:contactus' %}">Contact Us</a></span>
+                        {% endif %}
+                    {% endif %}
+                 </div>
+
+                 <div class="flex-child-nav-right flex-nav-child">
+                    {% if request.user.is_authenticated %}
+                    <span class="welcomemsg">Welcome, {{request.user.first_name | title }}</span>
+                    <span><a href="{% url 'medical:logout' %}">Logout</a></span>
+                    {% else %}
+                    <span><a href="{% url 'medical:login' %}">Login </a></span>
+                    <span><a href="{% url 'medical:register' %}">Register</a></span>
+                    {% endif %}
+                    
+                 </div>
+
+            </div>
+
+         </div>
+         <div class="spacer">
+            &nbsp;
+         </div>
+        {% if messages %}
+        {% for message in messages %}
+        <div id="messagecont">
+            <span {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{message}}</span>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% comment %}
+        The following is utilized so each webpage can inherit from a parent template as well as provide additional customizations.
+        The additions will be different by placing different HTML inside the block content django template tag.
+        {% endcomment %}
+         {% block content %}
+         <form class="form" action="./" method="POST" novalidate>
+            {% csrf_token %}
+            <div class="container-title">
+                <div class="form__title">{{header}}</div>
+                <p class="form__desc">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, nostrum? Laudantium molestiae explicabo numquam animi corrupti debitis ratione, accusamus nemo optio eum vero nesciunt facere aperiam! Labore pariatur accusantium exercitationem.
+                </p>
+            </div>
+            {% for field in form %}
+            <div class="form__item">
+              <label for="givennames" class="form__label">{{field.label}}</label>
+              {{field}}
+              {% if form.errors %}
+              <span class="form__error">{{field.errors}}</span>
+              {% endif %}
+            </div>
+            {% endfor %}
+            <div class="form__item">
+              <button class="form__btn" type="submit">Sign Up</button>
+            </div>
+          </form>
+         {% endblock %}
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </body>
+</html>
+
+
+
+
+   
+        
+
+    
+
+

@@ -21,6 +21,10 @@ python-jose = {extras = ["cryptography"], version = "*"}
 passlib = {extras = ["bcrypt"], version = "*"}
 openpyxl = "*"
 xlsxwriter = "*"
+django-label-tag-attr = "*"
+jsonfield = "*"
+django-extensions = "*"
+twilio = "*"
 
 [dev-packages]
 

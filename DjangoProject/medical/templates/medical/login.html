@@ -1,0 +1,111 @@
+{% extends 'medical/base1.html' %}
+
+{% load static %}
+
+{% block styles %}
+
+<style>
+
+    form {
+      background-color: white;
+    }
+
+    .center {
+    margin: 100px auto;
+    width: 40%;
+    height:300px;
+    border:1px solid rgb(73, 71, 71);
+    border-radius:15px;
+    text-align:center;
+    }
+
+    .header {
+    background-color: #EFF0F1;
+    
+    
+    }
+
+    h1 {
+    border-bottom: 1px solid black;
+    padding-bottom:10px;
+    }
+
+    label {
+
+    display:block;
+    margin-bottom:10px;
+
+    }
+
+    input {
+
+    width:40%;
+    height: 20px;
+    border-radius:12px;
+    
+    }
+
+    input[type='submit'] {
+
+    width:20%;
+    height: 40px;
+    margin-top:5px;
+
+    }
+
+    .center {
+
+    background-color: white;
+
+    }
+    .messagecont {
+      
+      
+    }
+
+    .error {
+      position:absolute;
+      top:50px;
+      margin: 5px;
+    }
+
+    .center {
+
+      border:2px solid rgb(55, 129, 179);
+      padding: 3px;
+      border-radius:10px;
+}
+
+
+
+</style>
+{% endblock styles %}
+
+{% block content %}
+
+<div class="center">
+  <div class="form-container">
+    <form action="" method="post" novalidate>
+    {% csrf_token %}
+      <div class="header">
+
+        <h1>Log In</h1>
+
+      </div>
+      
+      <div>
+        <label for="uname">Username</label>
+        <input type="text" placeholder="Please enter a username" id="uname" name="username" required>
+      </div>
+      <p></p>
+      <div>
+        <label for="pword">Password</label>
+        <input type="password" placeholder="Please enter your password" name="password" required>
+      </div>
+      <p></p>
+      <input type="submit">
+    </form>
+  </div>
+</div>
+
+{% endblock %}

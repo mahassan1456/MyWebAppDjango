@@ -1,0 +1,39 @@
+
+
+    <h1>Hello</h1>
+    <div class="grid-container">
+
+      <div class="grid-child gccl">
+        <p>Left Pane</p>
+      </div>
+
+      <div class="grid-child gccm">
+
+        <p class="form-title">{{header}}</p>
+            <form action="" method="post" novalidate>
+                <div class="flex-container">
+                    {% csrf_token %}
+                    {% for field in form %}
+                    <div class="input-fam">
+                        <div class="inner-flex">
+                            <label for="namebox">{{field.label}}</label>
+                            {{field}}
+                        </div>
+                        {% if field.errors %}
+                        {{field.errors}}
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+                <input class="subbutt" type="submit">
+            </form>
+      </div>
+     
+      
+      <div class="grid-child gccr">
+        <p>Right Pane</p>
+      </div>
+      
+
+    </div>
+  </body>
